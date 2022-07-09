@@ -4,7 +4,7 @@
           shaped
           tile>
     <v-card-title>
-      Search Tickets
+      Search flights
     </v-card-title>
 
     <v-card-text cols="12">
