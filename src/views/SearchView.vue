@@ -9,6 +9,15 @@
 
     <v-card-text cols="12">
       <v-form ref="form">
+        <v-alert v-if="alert.message"
+                 elevation="5"
+                 dismissible
+                 dense
+                 text
+                 :type="alert.type || 'success'">
+          {{ alert.message }}
+        </v-alert>
+
         <v-container>
           <v-row>
             <v-col cols="12">
@@ -72,6 +81,8 @@ export default {
       v => !!v || 'City is required',
       v => (v && v.length >= 3) || 'Name must be less than 3 characters',
     ],
+
+    alert: {},
   }),
 
   computed: {
@@ -101,6 +112,11 @@ export default {
     search () {
       if (!this.$refs.form.validate())
         return
+
+      if (!this.dates) {
+        this.alert = { type: 'error', message: 'Check travel dates' }
+        return
+      }
 
       // save search data into storage
       this.storeParams(this.searchData)

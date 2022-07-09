@@ -30,7 +30,6 @@ export default {
 
   computed: {
     dateRangeText () {
-      // FIXME
       return this.dates.join(' ~ ')
     },
     current () {
@@ -38,7 +37,7 @@ export default {
     },
   },
 
-  mounted: function () {
+  created: function () {
     if (this.initFrom?.length > 0)
       this.dates[0] = this.initFrom
 
